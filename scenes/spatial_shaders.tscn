@@ -16,6 +16,7 @@ sky = SubResource("Sky_joj37")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a4xob"]
 render_priority = 0
 shader = ExtResource("3_j0anp")
+shader_parameter/sphere_color = Color(1, 1, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_5gdlg"]
 material = SubResource("ShaderMaterial_a4xob")
