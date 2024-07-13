@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://lg3n8vkn5qi4"]
+[gd_scene load_steps=27 format=3 uid="uid://lg3n8vkn5qi4"]
 
 [ext_resource type="Script" path="res://scripts/spatial_shaders.gd" id="1_db346"]
 [ext_resource type="PackedScene" uid="uid://twg0tri4g6hr" path="res://scenes/camera_controller.tscn" id="1_p4cbf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" path="res://shaders/pbr.gdshader" id="5_agl3f"]
 [ext_resource type="Material" uid="uid://bm6ddw1flmm8i" path="res://shaders/converted.tres" id="6_i5103"]
 [ext_resource type="Shader" path="res://shaders/vertex.gdshader" id="7_5uvok"]
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="8_p1ne2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7jfiy"]
 
@@ -66,6 +67,22 @@ shader = ExtResource("7_5uvok")
 [sub_resource type="SphereMesh" id="SphereMesh_nem0n"]
 material = SubResource("ShaderMaterial_3jr1m")
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_jauji"]
+size = Vector2(10, 10)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a5wnh"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0nu7r"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_a5wnh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iaeq8"]
+render_priority = 0
+shader = ExtResource("8_p1ne2")
+shader_parameter/normalmap_texture = SubResource("NoiseTexture2D_0nu7r")
+
 [node name="SpatialShaders" type="Node3D"]
 script = ExtResource("1_db346")
 
@@ -74,30 +91,44 @@ environment = SubResource("Environment_b0d0y")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.80536, 0.463107, -0.370038, 0, 0.624234, 0.781237, 0.592787, -0.629177, 0.502733, 0, 3.69932, 0)
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="CameraController" parent="." instance=ExtResource("1_p4cbf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.85299)
 
 [node name="SphereExample" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_5gdlg")
 
 [node name="SphereExample2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.5, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_jq5t7")
 
 [node name="SphereExample3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_8nmdt")
 
 [node name="SphereExample4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_fsw5f")
 
 [node name="SphereExample5" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_scwnk")
 
 [node name="SphereExample6" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_nem0n")
+
+[node name="Water" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_jauji")
+surface_material_override/0 = SubResource("ShaderMaterial_iaeq8")
