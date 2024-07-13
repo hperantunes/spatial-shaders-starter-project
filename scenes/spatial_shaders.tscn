@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://lg3n8vkn5qi4"]
+[gd_scene load_steps=29 format=3 uid="uid://lg3n8vkn5qi4"]
 
 [ext_resource type="Script" path="res://scripts/spatial_shaders.gd" id="1_db346"]
 [ext_resource type="PackedScene" uid="uid://twg0tri4g6hr" path="res://scenes/camera_controller.tscn" id="1_p4cbf"]
@@ -78,10 +78,23 @@ seamless = true
 as_normal_map = true
 noise = SubResource("FastNoiseLite_a5wnh")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bahuk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ndqdo"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_bahuk")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iaeq8"]
 render_priority = 0
 shader = ExtResource("8_p1ne2")
+shader_parameter/albedo = Color(0.117647, 0.866667, 0.980392, 1)
+shader_parameter/direction1 = Vector2(1, 0)
+shader_parameter/direction2 = Vector2(1, 0)
+shader_parameter/scroll_speed1 = 0.03
+shader_parameter/scroll_speed2 = 0.02
 shader_parameter/normalmap_texture = SubResource("NoiseTexture2D_0nu7r")
+shader_parameter/normalmap_texture2 = SubResource("NoiseTexture2D_ndqdo")
 
 [node name="SpatialShaders" type="Node3D"]
 script = ExtResource("1_db346")
