@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://lg3n8vkn5qi4"]
 
 [ext_resource type="Script" path="res://scripts/spatial_shaders.gd" id="1_db346"]
-[ext_resource type="PackedScene" uid="uid://twg0tri4g6hr" path="res://scenes/camera_controller.tscn" id="1_p4cbf"]
+[ext_resource type="Script" path="res://scripts/camera_controller.gd" id="2_a7nni"]
 [ext_resource type="Shader" path="res://shaders/spatial_shaders.gdshader" id="3_j0anp"]
 [ext_resource type="Texture2D" uid="uid://dq50v6s4drwd1" path="res://icon.svg" id="4_5jbie"]
 [ext_resource type="Shader" path="res://shaders/pbr.gdshader" id="5_agl3f"]
@@ -109,8 +109,9 @@ visible = false
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="CameraController" parent="." instance=ExtResource("1_p4cbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.85299)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1, 3)
+script = ExtResource("2_a7nni")
 
 [node name="SphereExample" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
