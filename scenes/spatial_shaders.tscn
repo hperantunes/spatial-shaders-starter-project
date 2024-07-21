@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://lg3n8vkn5qi4"]
+[gd_scene load_steps=35 format=3 uid="uid://lg3n8vkn5qi4"]
 
 [ext_resource type="Script" path="res://scripts/spatial_shaders.gd" id="1_db346"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="2_a7nni"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://bm6ddw1flmm8i" path="res://shaders/converted.tres" id="6_i5103"]
 [ext_resource type="Shader" path="res://shaders/vertex.gdshader" id="7_5uvok"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="8_p1ne2"]
+[ext_resource type="Shader" path="res://shaders/cube.gdshader" id="9_naq6c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7jfiy"]
 
@@ -96,6 +97,28 @@ shader_parameter/scroll_speed2 = 0.02
 shader_parameter/normalmap_texture = SubResource("NoiseTexture2D_0nu7r")
 shader_parameter/normalmap_texture2 = SubResource("NoiseTexture2D_ndqdo")
 
+[sub_resource type="Gradient" id="Gradient_8yycb"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m0mvn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sqv4h"]
+seamless = true
+color_ramp = SubResource("Gradient_8yycb")
+noise = SubResource("FastNoiseLite_m0mvn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awb5k"]
+render_priority = 0
+shader = ExtResource("9_naq6c")
+shader_parameter/cube_color = Color(1, 0.0588235, 1, 1)
+shader_parameter/my_texture = SubResource("NoiseTexture2D_sqv4h")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ysyd0"]
+material = SubResource("ShaderMaterial_awb5k")
+subdivide_width = 3
+subdivide_height = 3
+subdivide_depth = 3
+
 [node name="SpatialShaders" type="Node3D"]
 script = ExtResource("1_db346")
 
@@ -144,5 +167,9 @@ visible = false
 mesh = SubResource("SphereMesh_nem0n")
 
 [node name="Water" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("PlaneMesh_jauji")
 surface_material_override/0 = SubResource("ShaderMaterial_iaeq8")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ysyd0")
