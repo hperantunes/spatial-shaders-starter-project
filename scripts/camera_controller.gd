@@ -7,9 +7,6 @@ const ALT_MULTIPLIER = 1.0 / SHIFT_MULTIPLIER
 
 @export_range(0.0, 1.0) var sensitivity = 0.25
 
-@onready var label_esc = $VFlowContainer2/LabelEsc
-@onready var label_controls = $VFlowContainer2/LabelControls
-
 var is_label_esc_visible: bool = true
 
 # Mouse state
@@ -70,10 +67,6 @@ func _input(event):
 func _process(delta):
 	_update_mouselook()
 	_update_movement(delta)
-	if Input.is_action_just_pressed("ui_cancel"):
-		is_label_esc_visible = not is_label_esc_visible
-		label_esc.visible = is_label_esc_visible
-		label_controls.visible = not is_label_esc_visible
 
 
 # Updates camera movement
