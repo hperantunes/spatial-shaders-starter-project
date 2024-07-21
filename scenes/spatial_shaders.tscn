@@ -97,28 +97,27 @@ shader_parameter/scroll_speed2 = 0.02
 shader_parameter/normalmap_texture = SubResource("NoiseTexture2D_0nu7r")
 shader_parameter/normalmap_texture2 = SubResource("NoiseTexture2D_ndqdo")
 
-[sub_resource type="Gradient" id="Gradient_pgfu7"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_t2f6p"]
-frequency = 0.1
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_23v2l"]
-seamless = true
-color_ramp = SubResource("Gradient_pgfu7")
-noise = SubResource("FastNoiseLite_t2f6p")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_awb5k"]
-render_priority = 0
-shader = ExtResource("9_naq6c")
-shader_parameter/depth = 0.0
-shader_parameter/my_texture = SubResource("NoiseTexture3D_23v2l")
-
 [sub_resource type="BoxMesh" id="BoxMesh_ysyd0"]
-material = SubResource("ShaderMaterial_awb5k")
 subdivide_width = 2
 subdivide_height = 2
 subdivide_depth = 2
+
+[sub_resource type="Gradient" id="Gradient_s51pi"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bnie0"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_cecx2"]
+seamless = true
+color_ramp = SubResource("Gradient_s51pi")
+noise = SubResource("FastNoiseLite_bnie0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7hcwh"]
+render_priority = 0
+shader = ExtResource("9_naq6c")
+shader_parameter/depth = 0.0
+shader_parameter/my_texture = SubResource("NoiseTexture3D_cecx2")
 
 [node name="SpatialShaders" type="Node3D"]
 script = ExtResource("1_db346")
@@ -173,3 +172,4 @@ surface_material_override/0 = SubResource("ShaderMaterial_iaeq8")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_ysyd0")
+surface_material_override/0 = SubResource("ShaderMaterial_7hcwh")
