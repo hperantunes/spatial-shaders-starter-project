@@ -115,9 +115,9 @@ shader_parameter/my_texture = SubResource("NoiseTexture2D_sqv4h")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ysyd0"]
 material = SubResource("ShaderMaterial_awb5k")
-subdivide_width = 3
-subdivide_height = 3
-subdivide_depth = 3
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
 
 [node name="SpatialShaders" type="Node3D"]
 script = ExtResource("1_db346")
@@ -127,7 +127,6 @@ environment = SubResource("Environment_b0d0y")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.80536, 0.463107, -0.370038, 0, 0.624234, 0.781237, 0.592787, -0.629177, 0.502733, 0, 3.69932, 0)
-visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
