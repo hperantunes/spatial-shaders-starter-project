@@ -142,31 +142,25 @@ mesh = SubResource("SphereMesh_5gdlg")
 
 [node name="SphereExample2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.5, 0, 0)
-visible = false
 mesh = SubResource("SphereMesh_jq5t7")
 
 [node name="SphereExample3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 0)
-visible = false
 mesh = SubResource("SphereMesh_8nmdt")
 
 [node name="SphereExample4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, 0)
-visible = false
 mesh = SubResource("SphereMesh_fsw5f")
 
 [node name="SphereExample5" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6, 0, 0)
-visible = false
 mesh = SubResource("SphereMesh_scwnk")
 
 [node name="SphereExample6" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5, 0, 0)
-visible = false
 mesh = SubResource("SphereMesh_nem0n")
 
 [node name="Water" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("PlaneMesh_jauji")
 surface_material_override/0 = SubResource("ShaderMaterial_iaeq8")
 
